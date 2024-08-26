@@ -38,15 +38,20 @@ else :
         st.rerun()
     if message :
         if message.split(" ")[0] == "@이름변경":
+            ### name 빈칸 처리 ###
+            _list=message.split(" ")
+            user_ms=" ".join(_list[1:])
+            ##### 빈칸 처리 끝 ###
+
             username1=st.session_state.username
-            user_ms=message.split(" ")[1]
+            #user_ms=message.split(" ")[1]
             st.session_state.messages.append(f"{username1}님이 {user_ms}로 변경되었습니다.")
-            st.session_state.username=message.split(" ")[1]
+            st.session_state.username=user_ms   #message.split(" ")[1]
             history=st.session_state.messages
             st.session_state.hist=True
             st.rerun()
         else:    
-           st.session_state.messages.append(f"{st.session_state.username}:{message}") 
+           st.session_state.messages.append(f"{st.session_state.username} : {message}") 
            if st.session_state.messages:
                 for messages in st.session_state.messages:
                     st.write(messages)
