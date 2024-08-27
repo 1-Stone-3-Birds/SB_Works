@@ -9,7 +9,8 @@ import os
 
 def prochat():
     p = KafkaProducer(
-        bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
+        #bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
+        bootstrap_servers=["localhost:29092"],
         value_serializer=lambda x: json.dumps(x).encode('utf-8')
 )
 
@@ -26,24 +27,16 @@ def prochat():
             username=changename
         data = {'message' : msg, 'time':time.time(), 'user': username}
         
-        ###################################
-        timeparse=datetime.fromtimestamp(data['time'])
-        curDir=os.getcwd()
-        os.makedirs(f"{curDir}/logs", exist_ok=True)
-        with open(f"{curDir}/logs/chat_{timeparse.strftime('%Y%m%d')}.log","a") as f:
-            data["time"]=str(timeparse)
-            f.write(str(data))
-            f.write("\n")
-        ###################################
         p.send('chat3',value=data)
         p.flush()
 
 def conchat():
     consumer = KafkaConsumer(
           'chat3',
-          bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
-          # auto_offset_reset='earliest',
-          auto_offset_reset='latest',
+          #bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
+          bootstrap_servers=["localhost:29092"],
+          auto_offset_reset='earliest',
+          # auto_offset_reset='latest',
           enable_auto_commit = True,
           group_id = 'chat-group',
           value_deserializer=lambda x: loads(x.decode('utf-8'))
@@ -56,7 +49,22 @@ def conchat():
     try:
         for m in consumer:
             data= m.value
-            print(f"[{data['user']}]:[{data['time']}] {data['message']}")
+            
+            timeparse=datetime.fromtimestamp(data['time'])
+            ## data["time"]=str(timeparse)  ####
+
+            print(f"[{data['user']}]:[{str(timeparse)}] {data['message']}")
+    
+            ###################################
+            timeparse=datetime.fromtimestamp(data['time'])
+            curDir=os.getcwd()
+            os.makedirs(f"{curDir}/logs", exist_ok=True)
+            with open(f"{curDir}/logs/chat_{timeparse.strftime('%Y%m%d')}.log","a") as f:
+                data["time"]=str(timeparse)
+                data["offset"]=m.offset
+                f.write(str(data))
+                f.write("\n")
+            ###################################
 
 
     except KeyboardInterrupt:
