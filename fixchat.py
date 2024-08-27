@@ -68,6 +68,7 @@ def prochat():
             producer.send('chat3', value=changename_message)
             producer.flush()        
             username=changename
+            continue
 
         data = {'message' : msg, 'time':time.time(), 'user': username}
 
