@@ -88,14 +88,15 @@ def conchat():
 #    print("채팅 프로그램 - 메시지 발신 및 수신")
 #    username = input("사용할 이름을 입력하세요 : ")
 
+def run():
     # 스레드 생성
-producer_thread = threading.Thread(target=prochat)
-consumer_thread = threading.Thread(target=conchat)
+    producer_thread = threading.Thread(target=prochat)
+    consumer_thread = threading.Thread(target=conchat)
 
     # 스레드 시작
-producer_thread.start()
-consumer_thread.start()
+    producer_thread.start()
+    consumer_thread.start()
 
     # 스레드 종료 대기
-producer_thread.join()
-consumer_thread.join()
+    producer_thread.join()
+    consumer_thread.join()
