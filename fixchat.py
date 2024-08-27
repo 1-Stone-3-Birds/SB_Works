@@ -7,26 +7,28 @@ import json
 import sys
 import os
 from apscheduler.schedulers.background import BackgroundScheduler
-
+import pandas as pd
 
 scheduler = BackgroundScheduler()
 scheduler.start()
 
 username = input("사용자 이름:")
 
-def clear_screen():
-    sys.stdout.write("\033[H\033[J")
-
 messages = []
 
+#movie_data = pd.read_parquet('/SB_Works/data')
+home_dir = os.path.expanduser('~')
+movie_data = pd.read_parquet(f"{home_dir}/code/SB_Works/data/parquet")
 
-
+def clear_screen():
+    sys.stdout.write("\033[H\033[J")
 
 def prochat():
     global username 
     
     producer = KafkaProducer(
         bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
+        #bootstrap_servers=['localhost:9092'],
         value_serializer=lambda x: json.dumps(x).encode('latin')
     )
     enter_message = {
@@ -61,7 +63,28 @@ def prochat():
             producer.send('chat3', value=exit_message)
             producer.flush()    
             os._exit(1)  
-            
+
+
+        if msg == "@영화봇":
+            # 영화 제목을 입력받기
+            moviename = input("영화제목 : ")
+            df = movie_data[movie_data['movieNm'] == moviename]
+
+            if not df.empty:
+                directors = df['directors'].values[0]
+                openDt = df['openDt'].values[0]
+                nationAlt = df['nationAlt'].values[0]
+                message = f"{moviename}(은)는 {nationAlt}에서 {openDt}일에 개봉한 '{directors}'감독의 영화입니다."
+
+                data = {'message': message, 'time': time.time(), 'user': '영화봇'}
+                producer.send('chat3', value=data)
+                producer.flush()
+            else:
+                print("해당 영화 정보를 찾을 수 없습니다.")
+
+            continue
+
+
         if msg == "@이름변경":
             changename=input("변경할 이름:")
             changename_message = {"message" : f"{username}님이 {changename}으로 변경했습니다.","user":f"{changename}","time":time.time()}
@@ -80,7 +103,7 @@ def conchat():
     consumer = KafkaConsumer(
           'chat3',
           bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
-          #bootstrap_servers=["localhost:29092"],
+          #bootstrap_servers=["localhost:9092"],
           auto_offset_reset='latest',
           # auto_offset_reset='latest',
           enable_auto_commit = True,
