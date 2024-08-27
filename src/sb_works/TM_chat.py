@@ -6,6 +6,7 @@ import threading
 import json
 import sys
 import os
+import re
 
 username=input("사용자 입력:")
 
@@ -30,6 +31,11 @@ def prochat():
         if msg == "@이름변경":
             changename=input("변경할 이름:")
             username=changename
+
+        pattern = re.compile('[\w\s]')
+        matches = pattern.findall(msg)
+
+        "".join(matches)
         data = {'message' : msg, 'time':time.time(), 'user': username}
         
         p.send('chat3',value=data)
