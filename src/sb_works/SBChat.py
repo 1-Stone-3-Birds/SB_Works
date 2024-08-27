@@ -26,16 +26,16 @@ def prochat():
             username=changename
         data = {'message' : msg, 'time':time.time(), 'user': username}
         # TODO 보내기
-        p.send('team3',value=data)
+        p.send('t3',value=data)
         p.flush()
 
 def conchat():
     consumer = KafkaConsumer(
-          'team3',
-          bootstrap_servers=['0.0.0.0:39092'],
-          auto_offset_reset='earliest',
+          't3',
+          bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
+          auto_offset_reset='latest',
           enable_auto_commit = True,
-          group_id = 'chat-group',
+
           value_deserializer=lambda x: loads(x.decode('utf-8'))
 )
 
