@@ -28,7 +28,6 @@ scheduler = BackgroundScheduler()
 scheduler.start()
 messages = []
 
-#movie_data = pd.read_parquet('/SB_Works/data')
 home_dir = os.path.expanduser('~')
 movie_data = pd.read_parquet(f"{home_dir}/code/SB_Works/data/parquet")
 
@@ -137,7 +136,6 @@ def conchat():
           bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
           #bootstrap_servers=["localhost:9092"],
           auto_offset_reset='latest',
-          # auto_offset_reset='latest',
           enable_auto_commit = True,
           group_id = f'{group_id}',
           value_deserializer=lambda x: loads(x.decode('latin'))
@@ -173,11 +171,6 @@ def conchat():
     finally:
         consumer.close()
 
-# if __name__ == "__main__":
-# print("채팅 프로그램 - 메시지 발신 및 수신")
-# username = input("사용할 이름을 입력하세요 : ")
-# 스케줄러 설정
-
 # 스레드 생성
 producer_thread = threading.Thread(target=prochat)
 consumer_thread = threading.Thread(target=conchat)
@@ -190,7 +183,3 @@ consumer_thread.start()
 producer_thread.join()
 consumer_thread.join()
 
-#    try:
-#        while True:
-#            time.sleep(1)  # 스케줄러가 계속 실행되도록 유지
-#    except (KeyboardInterrupt, SystemExit):
