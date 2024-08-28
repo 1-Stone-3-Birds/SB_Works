@@ -8,9 +8,10 @@
 (4) exit로 나가기 기능 \
 (5) 채팅 로그 저장\
 (6) airflow로 로그 파일 parquet 파일 변환 기능 \
-(7) airflow dag 성공 및 실패시 채팅방 알림 기능
-
+(7) airflow dag 성공 및 실패시 채팅방 알림 기능 \
+(8) 매일 오전 9시 25분에 스케줄 알림 메세지 전송
   
+
 ## 설치 환경 
 - `python 3.8`이상
 - `java`
@@ -20,6 +21,10 @@ sudo apt install java-17-openjdk
 - `kafka-python`
 ```bash
 pip install kafka-python
+```
+- `apscheduler`
+```bash
+pip install apscheduler
 ```
 - 'pyproject.toml파일의 dependencies다운'
 ```bash
@@ -60,10 +65,8 @@ python fixchat.py
 
 ![image](https://github.com/user-attachments/assets/dd20d799-0bea-48dc-bda9-279921f7b10c)
 ![image](https://github.com/user-attachments/assets/87e05409-13a0-41c3-9dd4-0093bb301c9e)
-
    
 5. exit 치면 나가기(제대로 구현안되서 exit 후에도 ctrl + c 로 강제종료 해야됨)
-
    
 ![image](https://github.com/user-attachments/assets/9a5835af-13dc-45f8-968d-d70a51d9859d)
 
