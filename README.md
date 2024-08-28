@@ -12,7 +12,6 @@
 (8) airflow dag 성공 및 실패를 채팅방에 알려주는 시스템 봇 기능 \
 (9) 매일 오전 9시 25분에 스케줄 알림 메세지 전송하는 알림 봇 기능\
 
-  
 
 ## 설치 환경 
 - `python 3.8`이상
@@ -41,11 +40,13 @@ pdm install
 /home/centa/code/SB_Works/airflow/dags
 ```
 
+
 ## 설치 방법
 1. 리포지토리를 클론
 ```bash
 git clone https://github.com/asset-No-1/airflow_chat.git](https://github.com/1-Stone-3-Birds/SB_Works.git
 ```
+
 
 ## 프로그램 실행 방법
 2. 프로그램 실행
@@ -53,6 +54,7 @@ git clone https://github.com/asset-No-1/airflow_chat.git](https://github.com/1-S
 python fixchat.py
 ```
 사용하는 사람마다 그룹아이디 안겹치게 바꾸고 사용 
+
 
 ## 프로그램 사용 방법 
 
@@ -63,7 +65,6 @@ python fixchat.py
 
 [그룹 아이디 설정 실패시]\
 ![image](https://github.com/user-attachments/assets/7de47395-8ecf-49ba-86fc-95b9ecbacb89)
-
 
 #### 2. 사용자 이름 입력
 
@@ -87,9 +88,6 @@ python fixchat.py
 
 [영화봇 입력 실패]\
 ![image](https://github.com/user-attachments/assets/d3316dc6-5b7d-45a1-9426-04036469e9bf)
-
-
-
 
 #### 6. 시스템 봇 기능
 
@@ -115,7 +113,6 @@ python fixchat.py
 [상대방 채팅 로그에 보이는 퇴장 문구]\
 ![image](https://github.com/user-attachments/assets/f164fc0c-178c-4d95-a221-afad7c8880ea)
 
-
 #### 10. 채팅로그 생성
 
 ![image](https://github.com/user-attachments/assets/3a9eb166-ac28-4eff-978e-e51febc934b3)
@@ -125,8 +122,3 @@ python fixchat.py
 ![image](https://github.com/user-attachments/assets/dd20d799-0bea-48dc-bda9-279921f7b10c)
 ![image](https://github.com/user-attachments/assets/87e05409-13a0-41c3-9dd4-0093bb301c9e)
    
-
-
-
-
-
