@@ -1,4 +1,5 @@
 # 챗봇 기능 채팅방
+
 ## 목차
 - [소개](#소개)
 
@@ -9,9 +10,29 @@
 챗봇 기능은 영화 정보, 시스템, 일정 챗봇 기능 내장 
 
 ## 기능
+- **스케줄링 알림**: 알림 메시지는 매일 오전 9시 25분에 전송
+  
+## 코드 개요
+- **send_alert()**: 매일 오전 9시 25분에 알림 메시지를 전송
+- **BackgroundScheduler**: 알림 메시지의 스케줄링을 관리
+  
+## 사전 요구 사항
+- 필요한 Python 라이브러리:
+  - `kafka-python`
+  - `apscheduler`
 
-## 기능 패키지
+## 설치
+ **필요한 Python 라이브러리 설치:**
+
+   ```bash
+   pip install kafka-python apscheduler
+   ```
 
 ## 사용법
+   ```bash
+   python reminder.py
+   ```
 
-## 참고
+## 설정
+
+- **스케줄링 알림**: 알림 내용이나 전송 시간을 변경하려면 코드의 send_alert 함수 수정
