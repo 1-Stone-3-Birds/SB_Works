@@ -1,0 +1,23 @@
+[project]
+name = "SB_Works"
+version = "0.4.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "GITSangWoo", email = "dogcenta@gmail.com"},
+    {name = "hun0219", email = "gsw98000@gmail.com"},
+    {name = "Mingk42", email = "xoals123456t@gmail.com"},
+    {name = "S00zzang", email = "sujinpark8719561@gmail.com"},
+]
+dependencies = [
+    "apscheduler>=3.10.4",
+    "pandas>=2.0.3",
+    "pyarrow>=17.0.0",
+    "kafka-python>=2.0.2",
+]
+requires-python = ">=3.8"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = true
