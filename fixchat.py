@@ -105,7 +105,7 @@ def prochat():
             username=changename
             continue
         ##### 글자 깨짐 미표출
-        pattern = re.compile('[\w\s]')
+        pattern = re.compile('[\w\s\!\@\#\$\%\&\(\)\~\*\-\=\+\_]')
         matches = pattern.findall(msg)
 
         "".join(matches)
