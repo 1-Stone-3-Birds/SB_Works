@@ -53,7 +53,7 @@ git clone https://github.com/asset-No-1/airflow_chat.git](https://github.com/1-S
 ```bash
 python fixchat.py
 ```
-사용하는 사람마다 그룹아이디 안겹치게 바꾸고 사용 
+
 
 
 ## 프로그램 사용 방법 
