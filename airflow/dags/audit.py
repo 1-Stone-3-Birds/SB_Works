@@ -19,7 +19,7 @@ with DAG(
     default_args={
         'depends_on_past': False,
         'retries': 1,
-        'retry_delay': timedelta(minutes=5)
+        'retry_delay': timedelta(minutes=1)
     },
     description='multi chat DAG',
     schedule_interval=timedelta(days=1),
@@ -75,8 +75,7 @@ with DAG(
 
         os.makedirs(f"{homePath}/code/SB_Works/parquet/", exist_ok=True)
         df.to_parquet(f"{homePath}/code/SB_Works/parquet/chat_{ds_nodash}.parquet")
-
-
+        
     def send_rst():
         from kafka import KafkaProducer
         import time
@@ -90,9 +89,16 @@ with DAG(
                 value_serializer=lambda x: json.dumps(x).encode('utf-8')
         )
 
+        
 
             while True:
-                data = {'message' : "task all success", 'time':time.time(), 'user': "AIRFLOW"}
+                msg="""
+                ---------------------------------------------
+                |   AIRFLOW PIPELINE COMPLELED SUCCESSFULLY |
+                |               SEE YOU LATER 🖐️            |
+                ---------------------------------------------
+                 """
+                data = {'message' : msg, 'time':time.time(), 'user': "AIRFLOW"}
 
                 p.send('chat3',value=data)
                 p.flush()
@@ -107,6 +113,41 @@ with DAG(
         # 스레드 종료 대기
         producer_thread.join()
 
+    def fail():
+        from kafka import KafkaProducer
+        import time
+        import threading
+        import json
+
+        def prochat():
+            p = KafkaProducer(
+                bootstrap_servers=['ec2-43-203-210-250.ap-northeast-2.compute.amazonaws.com:9092'],
+                #bootstrap_servers=["localhost:29092"],
+                value_serializer=lambda x: json.dumps(x).encode('utf-8')
+        )
+
+            while True:
+                msg="""
+                ---------------------------------------
+                |   AIRFLOW PIPELINE SOMETHING WRONG! |
+                |       CHECK PIPELINE & FIX IT!      |
+                ---------------------------------------
+                 """
+
+                data = {'message' : msg, 'time':time.time(), 'user': "AIRFLOW"}
+
+                p.send('chat3',value=data)
+                p.flush()
+
+                raise KeyboardInterrupt
+        # 스레드 생성
+        producer_thread = threading.Thread(target=prochat)
+
+        # 스레드 시작
+        producer_thread.start()
+
+        # 스레드 종료 대기
+        producer_thread.join()
 
     check = BranchPythonOperator(
             task_id="check.parquet",
@@ -137,9 +178,22 @@ with DAG(
             requirements=["kafka-python"],
             trigger_rule="none_failed"
             )
+
+
+    send_fail = PythonVirtualenvOperator(
+            task_id="send.fail",
+            python_callable=fail,
+             requirements=["kafka-python"],
+            trigger_rule="one_failed"
+            )
+
 ###################################################################
 
     start >> chkLog
     chkLog >> check >> rm_dir >> save >> send_rst  >> end
     chkLog >> send_rst
-    check >> save
+    check >> save >> send_fail
+    chkLog >> send_fail
+    check >> send_fail
+    rm_dir  >> send_fail
+    send_fail >> end

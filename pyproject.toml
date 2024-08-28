@@ -1,6 +1,6 @@
 [project]
 name = "SB_Works"
-version = "0.2.0"
+version = "0.4.0"
 description = "Default template for PDM package"
 authors = [
     {name = "GITSangWoo", email = "dogcenta@gmail.com"},
@@ -9,12 +9,10 @@ authors = [
     {name = "S00zzang", email = "sujinpark8719561@gmail.com"},
 ]
 dependencies = [
-    "streamlit>=1.37.1",
-<<<<<<< HEAD
     "apscheduler>=3.10.4",
-=======
+    "pandas>=2.0.3",
+    "pyarrow>=17.0.0",
     "kafka-python>=2.0.2",
->>>>>>> v0.1/chat
 ]
 requires-python = ">=3.8"
 readme = "README.md"
