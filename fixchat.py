@@ -108,7 +108,7 @@ def prochat():
         pattern = re.compile('[\w\s\!\@\#\$\%\&\(\)\~\*\-\=\+\_]')
         matches = pattern.findall(msg)
 
-        "".join(matches)
+        msg="".join(matches)
         #####
         data = {'message' : msg, 'time':time.time(), 'user': username}
 
