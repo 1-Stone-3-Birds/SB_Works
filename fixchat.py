@@ -93,6 +93,7 @@ def prochat():
                 producer.flush()
             else:
                 print("해당 영화 정보를 찾을 수 없습니다.")
+                print("계속하시려면 Enter를 입력해주세요.")
 
             continue
 
