@@ -5,7 +5,11 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
+<<<<<<< HEAD
+content_hash = "sha256:b4072fb517df3dad28bfb6b16e1677b4daf91e7b00722eacd9b3f7c25b9ea469"
+=======
 content_hash = "sha256:515f89c8c6cd112cd7f02d66ef71c553a951b8ae6f6d06fb62b0bdc2af4de60d"
+>>>>>>> v0.1/chat
 
 [[metadata.targets]]
 requires_python = "==3.8.*"
@@ -29,6 +33,23 @@ files = [
 ]
 
 [[package]]
+name = "apscheduler"
+version = "3.10.4"
+requires_python = ">=3.6"
+summary = "In-process task scheduler with Cron-like capabilities"
+groups = ["default"]
+dependencies = [
+    "importlib-metadata>=3.6.0; python_version < \"3.8\"",
+    "pytz",
+    "six>=1.4.0",
+    "tzlocal!=3.*,>=2.0",
+]
+files = [
+    {file = "APScheduler-3.10.4-py3-none-any.whl", hash = "sha256:fb91e8a768632a4756a585f79ec834e0e27aad5860bac7eaa523d9ccefd87661"},
+    {file = "APScheduler-3.10.4.tar.gz", hash = "sha256:e6df071b27d9be898e486bc7940a7be50b4af2e9da7c08f0744a96d4bd4cef4a"},
+]
+
+[[package]]
 name = "attrs"
 version = "24.2.0"
 requires_python = ">=3.7"
@@ -40,6 +61,25 @@ dependencies = [
 files = [
     {file = "attrs-24.2.0-py3-none-any.whl", hash = "sha256:81921eb96de3191c8258c199618104dd27ac608d9366f5e35d011eae1867ede2"},
     {file = "attrs-24.2.0.tar.gz", hash = "sha256:5cfb1b9148b5b086569baec03f20d7b6bf3bcacc9a42bebf87ffaaca362f6346"},
+]
+
+[[package]]
+name = "backports-zoneinfo"
+version = "0.2.1"
+requires_python = ">=3.6"
+summary = "Backport of the standard library zoneinfo module"
+groups = ["default"]
+marker = "python_version < \"3.9\""
+dependencies = [
+    "importlib-resources; python_version < \"3.7\"",
+]
+files = [
+    {file = "backports.zoneinfo-0.2.1-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:8961c0f32cd0336fb8e8ead11a1f8cd99ec07145ec2931122faaac1c8f7fd987"},
+    {file = "backports.zoneinfo-0.2.1-cp38-cp38-manylinux1_i686.whl", hash = "sha256:e81b76cace8eda1fca50e345242ba977f9be6ae3945af8d46326d776b4cf78d1"},
+    {file = "backports.zoneinfo-0.2.1-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:7b0a64cda4145548fed9efc10322770f929b944ce5cee6c0dfe0c87bf4c0c8c9"},
+    {file = "backports.zoneinfo-0.2.1-cp38-cp38-win32.whl", hash = "sha256:1b13e654a55cd45672cb54ed12148cd33628f672548f373963b0bff67b217328"},
+    {file = "backports.zoneinfo-0.2.1-cp38-cp38-win_amd64.whl", hash = "sha256:4a0f800587060bf8880f954dbef70de6c11bbe59c673c3d818921f042f9954a6"},
+    {file = "backports.zoneinfo-0.2.1.tar.gz", hash = "sha256:fadbfe37f74051d024037f223b8e001611eac868b5c5b06144ef4d8b799862f2"},
 ]
 
 [[package]]
@@ -654,6 +694,21 @@ groups = ["default"]
 files = [
     {file = "tzdata-2024.1-py2.py3-none-any.whl", hash = "sha256:9068bc196136463f5245e51efda838afa15aaeca9903f49050dfa2679db4d252"},
     {file = "tzdata-2024.1.tar.gz", hash = "sha256:2674120f8d891909751c38abcdfd386ac0a5a1127954fbc332af6b5ceae07efd"},
+]
+
+[[package]]
+name = "tzlocal"
+version = "5.2"
+requires_python = ">=3.8"
+summary = "tzinfo object for the local timezone"
+groups = ["default"]
+dependencies = [
+    "backports-zoneinfo; python_version < \"3.9\"",
+    "tzdata; platform_system == \"Windows\"",
+]
+files = [
+    {file = "tzlocal-5.2-py3-none-any.whl", hash = "sha256:49816ef2fe65ea8ac19d19aa7a1ae0551c834303d5014c6d5a62e4cbda8047b8"},
+    {file = "tzlocal-5.2.tar.gz", hash = "sha256:8d399205578f1a9342816409cc1e46a93ebd5755e39ea2d85334bea911bf0e6e"},
 ]
 
 [[package]]
