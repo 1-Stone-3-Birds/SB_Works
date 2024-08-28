@@ -8,6 +8,7 @@ import sys
 import os
 from apscheduler.schedulers.background import BackgroundScheduler
 import pandas as pd
+import re
 
 scheduler = BackgroundScheduler()
 scheduler.start()
@@ -92,7 +93,12 @@ def prochat():
             producer.flush()        
             username=changename
             continue
+        ##### 글자 깨짐 미표출
+        pattern = re.compile('[\w\s]')
+        matches = pattern.findall(msg)
 
+        "".join(matches)
+        #####
         data = {'message' : msg, 'time':time.time(), 'user': username}
 
         producer.send('chat3',value=data)
