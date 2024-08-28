@@ -5,7 +5,11 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
+<<<<<<< HEAD
 content_hash = "sha256:b4072fb517df3dad28bfb6b16e1677b4daf91e7b00722eacd9b3f7c25b9ea469"
+=======
+content_hash = "sha256:515f89c8c6cd112cd7f02d66ef71c553a951b8ae6f6d06fb62b0bdc2af4de60d"
+>>>>>>> v0.1/chat
 
 [[metadata.targets]]
 requires_python = "==3.8.*"
@@ -264,6 +268,16 @@ dependencies = [
 files = [
     {file = "jsonschema_specifications-2023.12.1-py3-none-any.whl", hash = "sha256:87e4fdf3a94858b8a2ba2778d9ba57d8a9cafca7c7489c46ba0d30a8bc6a9c3c"},
     {file = "jsonschema_specifications-2023.12.1.tar.gz", hash = "sha256:48a76787b3e70f5ed53f1160d2b81f586e4ca6d1548c5de7085d1682674764cc"},
+]
+
+[[package]]
+name = "kafka-python"
+version = "2.0.2"
+summary = "Pure Python client for Apache Kafka"
+groups = ["default"]
+files = [
+    {file = "kafka-python-2.0.2.tar.gz", hash = "sha256:04dfe7fea2b63726cd6f3e79a2d86e709d608d74406638c5da33a01d45a9d7e3"},
+    {file = "kafka_python-2.0.2-py2.py3-none-any.whl", hash = "sha256:2d92418c7cb1c298fa6c7f0fb3519b520d0d7526ac6cb7ae2a4fc65a51a94b6e"},
 ]
 
 [[package]]
