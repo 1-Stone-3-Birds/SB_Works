@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-# 챗봇 기능 채팅방
-
-## 목차
-- [소개](#소개)
-=======
 # 채팅로그가 남는 채팅방 
->>>>>>> release1.0
+
 
 ## 기능 
 (1) 4명이 참여가능한 채팅 프로그램\
@@ -14,38 +8,9 @@
 (4) exit로 나가기 기능 \
 (5) 채팅 로그 저장\
 (6) airflow로 로그 파일 parquet 파일 변환 기능 \
-(7) airflow dag 성공 및 실패시 채팅방 알림 기능 
+(7) airflow dag 성공 및 실패시 채팅방 알림 기능 \
 
-<<<<<<< HEAD
-## 기능
-- **스케줄링 알림**: 알림 메시지는 매일 오전 9시 25분에 전송
   
-## 코드 개요
-- **send_alert()**: 매일 오전 9시 25분에 알림 메시지를 전송
-- **BackgroundScheduler**: 알림 메시지의 스케줄링을 관리
-  
-## 사전 요구 사항
-- 필요한 Python 라이브러리:
-  - `kafka-python`
-  - `apscheduler`
-
-## 설치
- **필요한 Python 라이브러리 설치:**
-
-   ```bash
-   pip install kafka-python apscheduler
-   ```
-
-## 사용법
-   ```bash
-   python reminder.py
-   ```
-
-## 설정
-
-- **스케줄링 알림**: 알림 내용이나 전송 시간을 변경하려면 코드의 send_alert 함수 수정
-=======
-
 ## 설치 환경 
 - `python 3.8`이상
 - `java`
@@ -56,7 +21,7 @@ sudo apt install java-17-openjdk
 ```bash
 pip install kafka-python
 ```
-- 'pytoml dependencies'
+- 'pyproject.toml파일의 dependencies다운'
 ```bash
 pdm install
 ```
@@ -103,14 +68,3 @@ python fixchat.py
 ![image](https://github.com/user-attachments/assets/9a5835af-13dc-45f8-968d-d70a51d9859d)
 
 
-
-
-
-
-
-
-
-
-
- 
->>>>>>> release1.0
