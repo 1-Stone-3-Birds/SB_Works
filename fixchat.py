@@ -75,7 +75,7 @@ def prochat():
               계속 하시려면 Enter를 입력해주세요 ...
             """
             print(helpMsg)
-            
+            continue 
 
         if msg == "@영화봇":
             # 영화 제목을 입력받기
