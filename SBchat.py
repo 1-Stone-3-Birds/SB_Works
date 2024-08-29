@@ -56,15 +56,15 @@ def prochat():
         # 매일 정각 9시 25분에 호출되는 알림 함수
         alert_message = {
             "chat_room": "chat3",
-            "message": "에자일 칸반 미팅 5분 전입니다!",
+            "message": "에자일 칸반 미팅 1분 전입니다!",
 	        "user":"@알림봇",
 	        "time":time.time()
         }
         producer.send('chat3', value=alert_message)
         producer.flush()
 
-    scheduler.add_job(send_alert, 'cron', hour=9, minute=25)
-    # scheduler.add_job(send_alert, 'cron', hour=16, minute=30)
+    scheduler.add_job(send_alert, 'cron', hour=9, minute=23)
+    #scheduler.add_job(send_alert, 'cron', hour=16, minute=30)
     
     while True:
         msg=input()
@@ -74,7 +74,8 @@ def prochat():
             producer.send('chat3', value=exit_message)
             producer.flush()
             os._exit(1)  
-            
+            break
+
         if msg == "@도움말":
             helpMsg="""
             ------ help -----------------------------------------
