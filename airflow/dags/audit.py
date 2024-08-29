@@ -37,19 +37,18 @@ with DAG(
 
     def chk():
         curDir=os.getcwd()
-        if os.path.exists(f"{curDir}/../../data"):
+        if os.path.exists(f"{curDir}/../../parquet"):
             return "rm.dir"
         else:
             return "save"
 
     def chkLog(ds_nodash):
         homePath=os.path.expanduser("~")
-        print(f"{homePath}/code/SB_Works/logs/chat_{ds_nodash}.log")
 
         if os.path.isfile(f"{homePath}/code/SB_Works/logs/chat_{ds_nodash}.log"):
             return "check.parquet"
         
-        return "send.rst"
+        return "send.success"
 
     def sv(ds_nodash):
         import re
@@ -76,7 +75,7 @@ with DAG(
         os.makedirs(f"{homePath}/code/SB_Works/parquet/", exist_ok=True)
         df.to_parquet(f"{homePath}/code/SB_Works/parquet/chat_{ds_nodash}.parquet")
         
-    def send_rst():
+    def send_success():
         from kafka import KafkaProducer
         import time
         import threading
@@ -172,9 +171,9 @@ with DAG(
             trigger_rule="one_success"
             )
 
-    send_rst=PythonVirtualenvOperator(
-            task_id="send.rst",
-            python_callable=send_rst,
+    send_success=PythonVirtualenvOperator(
+            task_id="send.success",
+            python_callable=send_success,
             requirements=["kafka-python"],
             trigger_rule="none_failed"
             )
@@ -190,8 +189,8 @@ with DAG(
 ###################################################################
 
     start >> chkLog
-    chkLog >> check >> rm_dir >> save >> send_rst  >> end
-    chkLog >> send_rst
+    chkLog >> check >> rm_dir >> save >> send_success  >> end
+    chkLog >> send_success
     check >> save >> send_fail
     chkLog >> send_fail
     check >> send_fail
