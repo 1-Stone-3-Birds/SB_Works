@@ -77,8 +77,13 @@ python fixchat.py
 #### 4. 채팅작성
 
 ![image](https://github.com/user-attachments/assets/b035babd-a571-4e28-93f7-a8cf2681a3ec)
+#### 5. 이름변경
 
-#### 5. 영화봇 기능
+![image](https://github.com/user-attachments/assets/8e075742-75f6-44b1-aa3f-b9ef7d103faf)
+
+![image](https://github.com/user-attachments/assets/981f0376-d5ba-4606-86f0-c31b2f60b6ae)
+
+#### 6. 영화봇 기능
 
 [영화봇 입력]\
 ![image](https://github.com/user-attachments/assets/c1276ea5-5026-4c41-9736-e7c288d31db1)
@@ -89,7 +94,7 @@ python fixchat.py
 [영화봇 입력 실패]\
 ![image](https://github.com/user-attachments/assets/d3316dc6-5b7d-45a1-9426-04036469e9bf)
 
-#### 6. 시스템 봇 기능
+#### 7. 시스템 봇 기능
 
 [에어플로우 성공]\
 ![image](https://github.com/user-attachments/assets/d1c54ee0-3f06-4a11-944a-a24f3703d2c9)
@@ -97,15 +102,15 @@ python fixchat.py
 [에어플로우 실패]\
 ![image](https://github.com/user-attachments/assets/b5d077b8-cfc8-46cb-ac38-2902d36a2ff9)
 
-#### 7. 일정 봇 기능
+#### 8. 일정 봇 기능
 
 ![image](https://github.com/user-attachments/assets/fbb79c95-47d1-4293-bffc-52c461af3d7d)
 
-#### 8. 도움말 봇 기능
+#### 9. 도움말 봇 기능
 
 ![image](https://github.com/user-attachments/assets/3a72746e-7b43-407c-884c-b22a224de595)
 
-#### 9. exit 프로그램 종료 
+#### 10. exit 프로그램 종료 
 
 [입력]\
 ![image](https://github.com/user-attachments/assets/be381c8e-ccbd-4158-8cac-99455dfcff5b)
@@ -113,11 +118,11 @@ python fixchat.py
 [상대방 채팅 로그에 보이는 퇴장 문구]\
 ![image](https://github.com/user-attachments/assets/f164fc0c-178c-4d95-a221-afad7c8880ea)
 
-#### 10. 채팅로그 생성
+#### 11. 채팅로그 생성
 
 ![image](https://github.com/user-attachments/assets/3a9eb166-ac28-4eff-978e-e51febc934b3)
 
-#### 11. 에어플로우로 로그파일 파퀘로 변환
+#### 12. 에어플로우로 로그파일 파퀘로 변환
 
 ![image](https://github.com/user-attachments/assets/dd20d799-0bea-48dc-bda9-279921f7b10c)
 ![image](https://github.com/user-attachments/assets/87e05409-13a0-41c3-9dd4-0093bb301c9e)
